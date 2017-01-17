@@ -1,0 +1,26 @@
+{
+  "name": "multiplication-tables",
+  "version": "1.0.0",
+  "description": "A simple utility to generate multiplication tables, for viewing or printing.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/journeymanavi/multiplication-tables.git"
+  },
+  "keywords": [
+    "multiplication",
+    "tables",
+    "printable",
+    "multiplcation",
+    "tables"
+  ],
+  "author": "@journeymanavi",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/journeymanavi/multiplication-tables/issues"
+  },
+  "homepage": "https://github.com/journeymanavi/multiplication-tables#readme"
+}
