@@ -4,7 +4,7 @@
   "description": "A simple utility to generate multiplication tables, for viewing or printing.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server --open=www"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/journeymanavi/multiplication-tables/issues"
   },
-  "homepage": "https://github.com/journeymanavi/multiplication-tables#readme"
+  "homepage": "https://github.com/journeymanavi/multiplication-tables#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
 }
