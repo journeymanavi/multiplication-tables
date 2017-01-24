@@ -78,10 +78,11 @@ input:required {
 	position: relative;
 	height: 100%;
 	padding-top: 110px;
+	text-align: center;
 }
 
 .table {
-	text-align: center;
+
 	position: relative;
 	left: 0;
 	top: 20px;
