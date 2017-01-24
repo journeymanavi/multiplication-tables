@@ -81,6 +81,7 @@ input:required {
 }
 
 .table {
+	text-align: center;
 	position: relative;
 	left: 0;
 	top: 20px;
