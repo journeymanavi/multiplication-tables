@@ -176,8 +176,26 @@
 
     </div>    
 
-    <script src="js/main.js"></script>
     <script type="text/javascript">
+        // Returns a function, that, as long as it continues to be invoked, will not
+        // be triggered. The function will be called after it stops being called for
+        // N milliseconds. If `immediate` is passed, trigger the function on the
+        // leading edge, instead of the trailing.
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
         window.onload = function() {
             //generate tables markup
             // var colors = ['red','green','blue','yellow'];
@@ -192,10 +210,13 @@
             // }
 
             document.querySelector("#numbers-input")
-            .addEventListener('keyup', function(e) {
-                var tablesFor = parseInput(e.target.value);
-                renderTables(tablesFor);
-            });
+            .addEventListener('input', debounce(
+                function(e) {
+                    if(e.keyIdentifier !== 'U+00BC') {
+                        renderTables(parseInput(e.target.value));
+                    }
+                },
+                300));
         };
 
         function parseInput(inputText) {
@@ -240,13 +261,10 @@
             var classes = el.attributes.class.value.split(/ /);
             var indexOfClass = classes.indexOf(className);
             if (indexOfClass >= 0) {
-                var a = [];
-                for(var i = 0; i<classes.length; i++) {
-                    if (className !== classes[i]) {
-                        a.push(classes[i]);
-                    }
-                }
-                el.attributes.class.value = a.join(" ");
+                //splice manipulates the array in place and returns the spliced element,
+                //so need to be cautious while chaining .splice()
+                classes.splice(indexOfClass, 1);
+                el.attributes.class.value = classes.join(" ");
             }
         }
 
@@ -255,9 +273,9 @@
                 var table = document.querySelector("#table-"+i);
                 if(tablesFor.indexOf(i) >= 0) {
                     table.style = 'display:inline-block';
-                    setTimeout(function() {
-                        addClass(this, 'visible');
-                    }.bind(table), 50);
+                     setTimeout(function() {
+                         addClass(this, 'visible');
+                     }.bind(table), 50);
                 } else {
                     removeClass(table, 'visible');
                     window.setTimeout((function() {
