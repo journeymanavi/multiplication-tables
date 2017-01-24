@@ -89,6 +89,10 @@ input:required {
 	top: 0;
 }
 
+.table.displayed {
+	display: inline-block;
+}
+
 .table.red {
 	background-color: #b55;
 }

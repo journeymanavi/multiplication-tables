@@ -216,7 +216,7 @@
                         renderTables(parseInput(e.target.value));
                     }
                 },
-                300));
+                150));
         };
 
         function parseInput(inputText) {
@@ -272,14 +272,14 @@
             for(var i=1; i<=10; i++) {
                 var table = document.querySelector("#table-"+i);
                 if(tablesFor.indexOf(i) >= 0) {
-                    table.style = 'display:inline-block';
-                     setTimeout(function() {
-                         addClass(this, 'visible');
-                     }.bind(table), 50);
+                    addClass(table, 'displayed');
+                    setTimeout(function() {
+                     addClass(this, 'visible');
+                    }.bind(table), 50);
                 } else {
                     removeClass(table, 'visible');
                     window.setTimeout((function() {
-                        this.style = 'display:none';
+                        removeClass(this, 'displayed');
                     }).bind(table), 300);
                 }
             }
